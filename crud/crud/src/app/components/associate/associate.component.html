@@ -1,0 +1,36 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Associate Management</h2>
+  
+    <!-- Add Associate Form -->
+    <div class="card p-3 shadow-sm">
+      <h5>Add Associate</h5>
+      <div class="d-flex gap-2">
+        <input type="text" class="form-control" [(ngModel)]="newAssociate.name" placeholder="Name">
+        <input type="text" class="form-control" [(ngModel)]="newAssociate.department" placeholder="Department">
+        <button class="btn btn-primary" (click)="addAssociate()">Add</button>
+      </div>
+    </div>
+  
+    <!-- Associate List -->
+    <ul class="list-group mt-4">
+      <li class="list-group-item d-flex justify-content-between align-items-center"
+          *ngFor="let associate of associates">
+        <span><strong>{{ associate.name }}</strong> - {{ associate.department }}</span>
+        <div>
+          <button class="btn btn-sm btn-warning me-2" (click)="editAssociate(associate)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteAssociate(associate.id!)">Delete</button>
+        </div>
+      </li>
+    </ul>
+  
+    <!-- Update Form -->
+    <div *ngIf="selectedAssociate" class="card mt-4 p-3 shadow-sm">
+      <h5>Edit Associate</h5>
+      <div class="d-flex gap-2">
+        <input type="text" class="form-control" [(ngModel)]="selectedAssociate.name">
+        <input type="text" class="form-control" [(ngModel)]="selectedAssociate.department">
+        <button class="btn btn-success" (click)="updateAssociate()">Update</button>
+      </div>
+    </div>
+  </div>
+  
